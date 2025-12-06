@@ -29,13 +29,19 @@ public class task2 {
         System.out.print("Enter number of elements (1..20): ");
         int n = in.nextInt();
 
+        // simple check for wrong size
+        if (n < 1 || n > 20){
+            System.out.println("Incorrect size! Please enter number from 1 to 20.");
+            in.close();
+            return;
+        }
+
         int[] a = new int[n];
 
         System.out.println("Enter " + n + " integers:");
         for (int i = 0; i < n; i++){
             a[i] = in.nextInt();
         }
-
 
         int[] even = new int[n];
         int[] odd = new int[n];
@@ -51,17 +57,14 @@ public class task2 {
                 odd[oddCount] = a[i];
                 oddCount++;
             }
-
         }
 
         System.out.println("Number of even integers: " + evenCount);
         System.out.println("Number of odd integers: " + oddCount);
 
-
         System.out.print("Even integers: ");
         for (int i = 0; i < evenCount; i++){
             System.out.print(even[i] + " ");
-
         }
         System.out.println();
 
@@ -99,5 +102,3 @@ public class task2 {
         in.close();
     }
 }
-
-

@@ -34,12 +34,24 @@ public class task1{
         double rateUsdToGbp = 0.79;
         double rateGbpToUsd = 1.0 / rateUsdToGbp;
 
+        // first line as in task text
         System.out.println("Money conversion");
-        System.out.println("1 -Convert from USA$ to British Pound");
-        System.out.println("2 -Convert from British Pound to USA$");
-        System.out.print("Choose operation 1 or 2: ");
+
+        // nicer menu
+        System.out.println("===== MONEY CONVERTER =====");
+        System.out.println("1) USD -> GBP");
+        System.out.println("2) GBP -> USD");
+        System.out.println("===========================");
+        System.out.print("Select option (1 or 2): ");
 
         int choice = in.nextInt();
+
+        // check wrong choice
+        if (choice != 1 && choice != 2){
+            System.out.println("Incorrect choice! Please enter 1 or 2.");
+            in.close();
+            return;
+        }
 
         System.out.print("Enter amount: ");
         double amount = in.nextDouble();
@@ -51,18 +63,17 @@ public class task1{
         if (choice == 1){
             fromCurrency = "USD";
             toCurrency = "GBP";
-
             result = amount * rateUsdToGbp;
-
         } else{
             fromCurrency = "GBP";
             toCurrency = "USD";
-
             result = amount * rateGbpToUsd;
         }
 
-        System.out.printf("%10.3f%n", result);
+        // explain result: label + value + currency
+        System.out.printf("Converted amount: %10.3f %s%n", result, toCurrency);
 
+        // write to file as before
         PrintWriter pw = new PrintWriter(new FileWriter("task1.out", true));
         pw.println(fromCurrency + " " + amount + " -> "
                    + toCurrency + " " + result);
@@ -72,5 +83,3 @@ public class task1{
     }
 
 }
-
-
